@@ -1,0 +1,34 @@
+﻿name: RaceDay CI/CD Pipeline
+
+# workflow when you push code to your branch
+on:
+  push:
+    branches: [ "main", "master", "part-2-api" ] 
+  pull_request:
+    branches: [ "main", "master", "part-2-api" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest # runs on a Linux server
+
+    steps:
+    # 1. Download code from GitHub
+    - uses: actions/checkout@v3
+
+    # 2. Install .NET 8.0 on the server
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 8.0.x
+
+    # 3. Download all NuGet packages
+    - name: Restore dependencies
+      run: dotnet restore
+
+    # 4. Build the project to check for errors
+    - name: Build
+      run: dotnet build --no-restore
+
+    # 5. Run your xUnit tests!
+    - name: Test
+      run: dotnet test --no-build --verbosity normal
