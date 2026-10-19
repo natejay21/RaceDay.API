@@ -17,7 +17,7 @@ The system enforces strict role-based access control (RBAC) for two distinct use
 - Visual Studio 2022
 
 ### How to Run
-1. Clone the repository: `git clone [Your GitHub Repo URL]`
+1. Clone the repository: `git clone [https://github.com/natejay21/RaceDay.API]`
 2. Open the solution in Visual Studio.
 3. Ensure your connection string in `appsettings.json` points to your local SQL Server.
 4. Open the **Package Manager Console** and run:
